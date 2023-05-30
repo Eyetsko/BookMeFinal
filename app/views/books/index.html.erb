@@ -1,0 +1,12 @@
+<h1>ALL BOOKS</h1>
+
+<% @books.each |book| %>
+  <%= link_to book.title, book_path(book) %>
+  <%= book.author %>
+  <%  book.user_id %>
+<% end %>
+
+<button class="btn btn-success">
+  <%= link_to 'POST A BOOK', new_book_path %>
+</button>
+
