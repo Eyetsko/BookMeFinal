@@ -6,14 +6,18 @@ class RentalsController < ApplicationController
   end
 
   def new
+    @book = Book.find(params[:book_id])
+    @rental.book = @book
+    @rental.user = current_user
     @rental = Rental.new
   end
 
   def create
     @rental = Rental.new(rental_params)
-    binding.pry
+    @book = Book.find(params[:book_id])
+    @rental.book = @book
     @rental.user = current_user
-    if @rental.save
+    if @rental.save!
       redirect_to rentals_path
     else
       render :new, status: :unprocessable_entity
@@ -23,6 +27,6 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:date, :book_id, :user_id)
+    params.require(:rental).permit(:start_date, :end_date, :book_id, :user_id)
   end
 end
