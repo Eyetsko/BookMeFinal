@@ -1,0 +1,11 @@
+<h1>POST A BOOK TO BE RENTED</h1>
+
+<%= simple_form_for [@book] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :author %>
+  <%= f.submit class: "btn btn-warning m-2" %>
+<% end %>
+
+<button class="btn btn-dark  m-2">
+  <%= link_to 'ALL BOOKS', books_path %>
+</button>
