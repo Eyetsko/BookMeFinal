@@ -1,2 +1,21 @@
-<%= @book.title %>
-<%= @book.author %>
+<div class="d-flex">
+
+  <div class="row col-6">
+    <h1><%= @book.title %></h1>
+    <p><%= @book.author %></p>
+
+    <button class="btn btn-dark">
+      <%= link_to 'ALL BOOKS', books_path %>
+    </button>
+  </div>
+
+  <div class="row col-6">
+    <p>All the details here</p>
+    <p>All the details here</p>
+    <p>All the details here</p>
+    <br>
+    <button class="btn btn-warning">
+      RENT
+    </button>
+  </div>
+</div>
