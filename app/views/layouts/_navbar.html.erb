@@ -9,13 +9,18 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Rentals</a>
+          <a class="nav-link" href="/">My Rentals</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Add Book</a>
+          <a class="nav-link" href="<%= new_book_path %>">Add Book</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="<%= new_user_session_path %>">Log in</a>
+          <a class="nav-link" href="
+          <% if logged_in? %>
+            <%= destroy_user_session_path %>
+            <% else %>
+              <%= new_user_session_path %>
+            <% end %>">Log in</a>
         </li>
       </ul>
     </div>
