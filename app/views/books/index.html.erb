@@ -1,36 +1,11 @@
-<div class="container">
-  <div class="row mt-5">
+<h1>ALL BOOKS</h1>
 
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">To Kill a Mockingbird</h5>
-          <p class="card-text">Harper Lee</p>
-          <a href="#" class="btn btn-primary">Rent me!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348990566i/5470.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">1984</h5>
-          <p class="card-text">George Orwell</p>
-          <a href="#" class="btn btn-primary">Rent me!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Catcher in the Rye</h5>
-          <p class="card-text">J.D. Salinger</p>
-          <a href="#" class="btn btn-primary">Rent me!</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% @books.each do |book| %>
+  <%= link_to book.title, book_path(book) %>
+  <%= book.author %>
+  <%  book.user_id %>
+<% end %>
 
+<button class="btn btn-success">
+  <%= link_to 'POST A BOOK', new_book_path %>
+</button>
