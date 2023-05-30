@@ -1,13 +1,22 @@
 // Specific CSS for your home-page
 div {
-  background-color: #F8F6F4;
-  // height: 150px;
-  // width: 900px;
-  // border-radius: 5px;
+  background-color: #1d3557;
   justify-content: absolute;
+
 }
 
-.container {
+.image1 {
+  background-image: url(https://images.unsplash.com/photo-1561871733-40a3338b8cb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80);
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 0; margin-right: 0;
+}
+
+.b-container {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
@@ -17,32 +26,54 @@ div {
   color: var(--color-text-body);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);
+
+  button {
+    width: 160px;
+    margin-top: 15px;
+    margin-left: 100px;
+    font-family: 'Roboto regular', sans-serif;
+    font-weight: regular;
+    background-color: #ffba08;
+    color: black;
+    border-radius: 100px;
+    // box-shadow: 10%;
+  }
 }
 
-h1 {
-  color: black;
-  font-size: 50px;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-family: "Nunito", "Helvetica", "sans-serif";
-  font-weight: 500;
-  line-height: 1.2;
-}
+body{
+  h1 {
+    color: white;
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 150px;
+    margin-left: 100px;
+    margin-bottom: 0.5rem;
+    font-weight: 45px;
+    line-height: 1.2;
+  }
 
-p {
-  color: grey;
-}
 
 .navbar {
   background-color: #ACB1D6;
+
+  p {
+    color: white;
+    margin-left: 100px;
+    font-family: 'Roboto regular', sans-serif;
+    font-size: 20px;
+  }
 }
 
-.navbar-expand-lg .navbar-collapse {
-  background-color: #ACB1D6;
+.navbar > .container-fluid {
+  min-height: 2rem;
+  background-color: #563d7c;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    // width: 100%;
+  }
 }
-
-.button {
-  box-sizing: border-box;
-
 }
