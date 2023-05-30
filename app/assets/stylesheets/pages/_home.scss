@@ -1,1 +1,47 @@
 // Specific CSS for your home-page
+div {
+  background-color: #F8F6F4;
+  // height: 150px;
+  // width: 900px;
+  // border-radius: 5px;
+  justify-content: absolute;
+}
+
+.container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  // min-height: 100%;
+
+  background-color: var(--color-background);
+  color: var(--color-text-body);
+  line-height: var(--line-height-body);
+  font-family: var(--font-family-sans);
+}
+
+h1 {
+  color: black;
+  font-size: 50px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: "Nunito", "Helvetica", "sans-serif";
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  color: grey;
+}
+
+.navbar > .container-fluid {
+  background-color: #ACB1D6;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  background-color: #ACB1D6;
+}
+
+.button {
+  box-sizing: border-box;
+}
