@@ -1,23 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="navbar navbar-expand-sm fixed-top">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+    <div class="ms-auto" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+      <% if user_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <%= link_to "Home", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Rentals</a>
+          <%= link_to "My Rentals", "#", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Add Book</a>
+          <%= link_to "Add Book", new_book_path, class: "nav-link" %>
         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="<%= new_user_session_path %>">Log in</a>
+        <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %>
         </li>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
       </ul>
     </div>
   </div>
-</nav>
+</div>
