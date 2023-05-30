@@ -19,7 +19,8 @@
 </div>
 <h1> Your rentals</h1>
     <% @rentals.each do |rental| %>
-        <%= rental.date %>
+        <%= rental.start_date %>
+        <%= rental.end_date %>
         <%= rental.book.title %>
         <%= rental.book.author %>
         <%= link_to rental.book.title, book_path(rental.book) %>

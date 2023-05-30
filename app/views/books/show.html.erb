@@ -1,21 +1,17 @@
-<div class="d-flex">
 
-  <div class="row col-6">
-    <h1><%= @book.title %></h1>
-    <p><%= @book.author %></p>
+<h1><%= @book.title %></h1>
+<h2><%= @book.author %></h2>
 
-    <button class="btn btn-dark">
-      <%= link_to 'ALL BOOKS', books_path %>
-    </button>
-  </div>
+<%= simple_form_for [@book, @rental]  do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit class: "btn btn-warning m-2" %>
+<% end %>
 
-  <div class="row col-6">
-    <p>All the details here</p>
-    <p>All the details here</p>
-    <p>All the details here</p>
-    <br>
-    <button class="btn btn-warning">
-      RENT
-    </button>
-  </div>
-</div>
+<button class="btn btn-dark  m-2">
+  <%= link_to 'ALL BOOKS', books_path %>
+</button>
+
+
+<%= link_to "Rent the book",  book_rentals_path(@book) %>
+
