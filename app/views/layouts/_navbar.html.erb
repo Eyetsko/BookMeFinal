@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-expand-sm fixed-top">
+<div class="navbar fixed-top navbar-expand-lg p-0">
 
   <div class="container-fluid">
     <div class="ms-auto" id="navbarSupportedContent">
@@ -13,6 +13,9 @@
         </li>
         <li class="nav-item">
           <%= link_to "Add Book", new_book_path, class: "nav-link" %>
+        </li>
+          <li class="nav-item">
+          <%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %>
         </li>
       <% else %>
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
