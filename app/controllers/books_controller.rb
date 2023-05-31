@@ -4,8 +4,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
     @rental = Rental.new
+    @book = Book.find(params[:id])
   end
 
   def new
