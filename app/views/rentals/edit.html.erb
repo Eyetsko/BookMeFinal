@@ -1,12 +1,9 @@
+
 <h1><%= @book.title %></h1>
 <h2><%= @book.author %></h2>
 
-<%= simple_form_for [@book, @rental]  do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.submit class: "btn btn-warning m-2" %>
-<% end %>
+<%= render 'layouts/calendar', book: @book, rental: @rental %>
 
-<button class="btn btn-dark  m-2">
+<button class="btn btn-dark">
   <%= link_to 'ALL BOOKS', books_path %>
 </button>
