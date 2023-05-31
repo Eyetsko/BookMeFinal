@@ -1,16 +1,21 @@
 <h1>ALL BOOKS</h1>
-<div class="row d-flex justify-content-start">
-<button class="btn btn-success">
-  <%= link_to 'POST A BOOK', new_book_path %>
-</button>
+
+  <div class="row d-flex justify-content-space evenly">
+  <div class="col-2 btn btn-primary me-auto mt-3 mb-3"><%= link_to 'POST A BOOK', new_book_path %></div>
+
+  <form class="d-flex" role="search">
+        <input class="form-control" type="search" placeholder="Search by title..." aria-label="Search">
+        <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+
 <% @books.each do |book| %>
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
+    <div class="col-4 align-items-stretch" >
+      <div class="card" style="width: 24rem; height: 100;">
       <img src="<%= book.image_url %>" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><%= book.title %></h5>
+        <div class="card-body" style="overflow:hidden;">
+          <p class="card-title"><strong><%= book.title %></strong></p>
           <p class="card-text"><%= book.author %></p>
-          <button class="btn btn-primary"><%= link_to book.title, book_path(book) %></button>
+          <button class="btn btn-primary"><%= link_to "book details", book_path(book) %></button>
         </div>
       </div>
     </div>
