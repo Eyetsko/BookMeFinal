@@ -1,19 +1,19 @@
 <h1>ALL BOOKS</h1>
-
 <div class="row d-flex justify-content-start">
-
-<button class="btn btn-success col-3">
+<button class="btn btn-success">
   <%= link_to 'POST A BOOK', new_book_path %>
 </button>
-
-  <% @books.each do |book| %>
-  <div class="card col-3">
-    <div class="card-body d-flex flex-column">
-
-      <h5 class="card-title"><%= link_to book.title, book_path(book) %></h5>
-      <p class="card-text">  <%= book.author %></p>
-
+<% @books.each do |book| %>
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+      <img src="<%= book.image_url %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <p class="card-text"><%= book.author %></p>
+          <button class="btn btn-primary"><%= link_to book.title, book_path(book) %></button>
+        </div>
+      </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
+
 </div>
