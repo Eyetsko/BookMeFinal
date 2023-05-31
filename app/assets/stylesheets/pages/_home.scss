@@ -1,12 +1,11 @@
-.image1 {
-  height: 100vh;
-  width: 100vw;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  margin-left: 0; margin-right: 0;
+
+.image-bg {
+  background-image: url(https://images.unsplash.com/photo-1561871733-40a3338b8cb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 .b-container {
   margin-top: 100px;
   display: flex;
@@ -16,31 +15,26 @@
   color: var(--color-text-body);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);
-  button {
-    width: 160px;
-    margin-top: 15px;
-    margin-left: 100px;
-    font-family: 'Roboto regular', sans-serif;
-    font-weight: regular;
-    background-color: #FFBA08;
-    color: black;
-    border-radius: 100px;
-    // box-shadow: 10%;
-  }
+  margin-left: 93px !important;
 }
 
-// body{
-//   h1 {
-//     color: white;
-//     font-size: 50px;
-//     font-family: 'Roboto', sans-serif;
-//     margin-top: 150px;
-//     margin-left: 100px;
-//     margin-bottom: 0.5rem;
-//     font-weight: 45px;
-//     line-height: 1.2;
-//   }
-// }
+.h1-title {
+  color: white;
+  font-size: 50px;
+  font-family: $bm-font;
+  font-weight: 700;
+  margin-top: 150px;
+  margin-bottom: 0.5rem;
+  font-weight: 45px;
+  line-height: 1.2;
+  text-shadow: 10%;
+}
+
+.h2-homepage {
+  color: white;
+  font-family: 'Roboto regular', sans-serif;
+  font-size: 20px;
+}
 
 .navbar > .container-fluid {
   min-height: 2rem;
@@ -55,6 +49,7 @@
 .navbar-expand-lg .navbar-collapse {
   background-color: #563D7C;
 }
+
 a.nav-link{
   color: white;
   background-color:#563D7C ;
