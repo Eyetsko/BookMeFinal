@@ -1,0 +1,12 @@
+<h1>UPDATE <%= @book.title %></h1>
+
+<div class="row col-6 justify-content-center">
+  <div>
+    <%= simple_form_for @book do |f| %>
+      <%= f.input :title %>
+      <%= f.input :author %>
+      <%= f.input :image_url %>
+      <%= f.submit class: "btn btn-warning", label: "UPDATED" %>
+    <% end %>
+  </div>
+</div>

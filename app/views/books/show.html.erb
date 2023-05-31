@@ -1,9 +1,22 @@
-
 <h1><%= @book.title %></h1>
-<h2><%= @book.author %></h2>
+<h3><%= @book.author %></h3>
 
-<%= render 'layouts/calendar', book: @book, rental: @rental %>
+<div class="d-flex justify-content-between">
+  <div>
+    <%= image_tag(@book.image_url) %>
+    <br>
+    <br>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-dark">
+        <%= link_to 'BACK TO ALL BOOKS', books_path %>
+      </button>
 
-<button class="btn btn-dark">
-  <%= link_to 'ALL BOOKS', books_path %>
-</button>
+      <button class="btn btn-dark">
+        <%= link_to 'UPDATE BOOK', edit_book_path %>
+      </button>
+    </div>
+  </div>
+  <div>
+    <%= render 'layouts/calendar', book: @book, rental: @rental %>
+  </div>
+</div>
