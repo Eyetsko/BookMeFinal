@@ -1,5 +1,7 @@
-<div class="container mt-5">
-<h2>Sign up</h2>
+<div class ="container mt-5 form p-0" style="width:800px; margin-top:100px;">
+  <div class="row align-items-center justify-content-center p-3 border bg-light sign-up-page">
+    <div class="col-6 d-flex flex-column signup">
+      <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -24,4 +26,11 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+    </div>
+
+    <div class="col-6 image" style="object-fit:contain">
+    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="" style="width: 100%">
+    </div>
+
+  </div>
 </div>
