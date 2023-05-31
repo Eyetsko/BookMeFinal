@@ -1,19 +1,15 @@
-# before_action :set_book, only: [:new, :create]
-
 class RentalsController < ApplicationController
+  before_action :set_book, only: [:new, :create, :edit, :update]
+
   def index
-    @rentals = Rental.all
+    @rentals = Rental.where(user_id: current_user.id).where('end_date >= ?', Date.today)
   end
 
   def new
-    @book = Book.find(params[:book_id])
-    # @rental.book = @book
-    # @rental.user = current_user
     @rental = Rental.new
   end
 
   def create
-    @book = Book.find(params[:book_id])
     @rental = Rental.new(rental_params)
     @rental.book = @book
     @rental.user = current_user
@@ -24,13 +20,20 @@ class RentalsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @rental = Rental.where(user_id: current_user.id).find(params[:book_id])
+  end
+
   private
 
   def rental_params
     params.require(:rental).permit(:start_date, :end_date, :book_id, :user_id)
   end
 
-  # def set_book
-  #   @book = Book.find(params[:book_id])
-  # end
+  def set_book
+    @book = Book.find(params[:book_id])
+  end
 end
