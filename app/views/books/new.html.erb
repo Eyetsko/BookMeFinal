@@ -1,12 +1,14 @@
 <h1>POST A BOOK TO BE RENTED</h1>
 
-<%= simple_form_for @book do |f| %>
-  <%= f.input :title %>
-  <%= f.input :author %>
-  <%= f.input :image_url %>
-  <%= f.submit class: "btn btn-warning" %>
-<% end %>
-
+<div class="row col-6 justify-content-center">
+      <%= simple_form_for @book do |f| %>
+      <%= f.input :title %>
+      <%= f.input :author %>
+      <%= f.input :image_url %>
+      <%= f.submit class: "btn btn-warning" %>
+    <% end %>
+</div>
+<br>
 <button class="btn btn-dark">
   <%= link_to 'BACK TO ALL BOOKS', books_path %>
 </button>

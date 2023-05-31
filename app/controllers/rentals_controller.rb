@@ -23,10 +23,20 @@ class RentalsController < ApplicationController
   end
 
   def edit
+    @rental = Rental.find(params[:id])
+    @book = @rental.book
+    @rental.user = current_user
   end
 
   def update
-    @rental = Rental.where(user_id: current_user.id).find(params[:book_id])
+    start_date = params[:rental][:start_date].split(" to ")[0]
+    end_date = params[:rental][:start_date].split(" to ")[1]
+    @rental = Rental.find(params[:id])
+    if @rental.update(start_date: start_date, end_date: end_date)
+      redirect_to rentals_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
