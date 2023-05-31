@@ -2,26 +2,28 @@
 
 <div class="container">
   <div class="row mt-5">
-
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">To Kill a Mockingbird</h5>
-          <p class="card-text">Harper Lee</p>
-          <a href="#" class="btn btn-primary">Rent me!</a>
+    <% @rentals.each do |rental| %>
+      <div class="col-4 mb-5">
+        <div class="card" style="width: 18rem;">
+        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= rental.book.title %></h5>
+            <p class="card-text"><%= rental.book.author %></p>
+            <p class="card-text"><%= rental.start_date %></p>
+            <p class="card-text"><%= rental.end_date %></p>
+            <a href= <%= book_path(rental.book) %> class="btn btn-primary">Rent details!</a>
+          </div>
         </div>
       </div>
-    </div>
-
-
+    <% end %>
   </div>
 </div>
-<h1> Your rentals</h1>
-    <% @rentals.each do |rental| %>
-        <%= rental.start_date %>
-        <%= rental.end_date %>
-        <%= rental.book.title %>
-        <%= rental.book.author %>
-        <%= link_to rental.book.title, book_path(rental.book) %>
-    <% end %>
+
+<%# <h1> Your rentals</h1> %>
+    <%# <% @rentals.each do |rental| %>
+        <%# <%= rental.start_date %>
+        <%# <%= rental.end_date %>
+        <%# <%= rental.book.title %>
+        <%# <%= rental.book.author %>
+        <%# <%= link_to rental.book.title, book_path(rental.book) %>
+    <%# <% end %>
