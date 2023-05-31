@@ -16,7 +16,7 @@ class RentalsController < ApplicationController
     @rental.book = @book
     @rental.user = current_user
     if @rental.save!
-      redirect_to rentals_path
+      redirect_to rentals_path, notice: "Your book is rented!"
     else
       render :new, status: :unprocessable_entity
     end
