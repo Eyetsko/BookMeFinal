@@ -1,25 +1,25 @@
-
-<h1>ALL BOOKS</h1>
+<br>
+<h1>ALL BOOKS</h1>   <h1><%=link_to '+', new_book_path %></h1>
   <div class="row d-flex justify-content-center">
 
-  <div class="col-2 button-bm mt-3 mb-3"><%= link_to 'POST A BOOK', new_book_path %></div>
 
-  <form class="d-flex" role="search">
-        <input class="form-control" type="search" placeholder="Search by title..." aria-label="Search">
-        <button class="button-bm" type="submit">Search</button>
-  </form>
+
 
 <% @books.each do |book| %>
     <div class="col-4 align-items-stretch" >
       <div class="card" style="width: 24rem; height: 100;">
       <img src="<%= book.image_url %>" class="card-img-top" alt="...">
         <div class="card-body" style="overflow:hidden;">
-          <p class="card-title"><strong><%= book.title %></strong></p>
+
+          <% if book.title.length > 35 %>
+            <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
+          <% else %>
+            <p class="card-title"><strong> <%= book.title  %>  </strong></p>
+          <% end %>
+
           <p class="card-text"><%= book.author %></p>
           <button class="button-bm"><%= link_to "book details", book_path(book) %></button>
         </div>
       </div>
     </div>
     <% end %>
-
-</div>
