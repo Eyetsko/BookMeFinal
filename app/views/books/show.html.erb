@@ -3,7 +3,7 @@
 
 <div class="d-flex justify-content-between">
   <div>
-    <%= image_tag(@book.image_url) %>
+    <%= @book.image_url ? image_tag(@book.image_url) : "" %>
     <br>
     <br>
     <div class="d-flex justify-content-between">

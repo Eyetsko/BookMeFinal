@@ -5,8 +5,8 @@
     <% @rentals.each do |rental| %>
       <div class="col-4 mb-5">
         <div class="card" style="width: 18rem;">
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg" class="card-img-top" alt="...">
           <div class="card-body">
+            <img src=<%=rental.book.image_url %> class="card-img-top" alt="...">
             <h5 class="card-title"><%= rental.book.title %></h5>
             <p class="card-text"><%= rental.book.author %></p>
             <p class="card-text"><%= rental.start_date %></p>
