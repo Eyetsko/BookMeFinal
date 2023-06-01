@@ -1,18 +1,18 @@
 <h1>ALL BOOKS <%=link_to icon('fa-solid', 'circle-plus'), new_book_path%> </h1>
 
- <%= form_with url: books_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "search for a book..."
-        %>
-        <%= submit_tag "Search", class: "" %>
-      <% end %>
+  <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "search for a book..."
+    %>
+    
+  <% end %>
 
 
-  <div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center">
 
-<% @books.each do |book| %>
+  <% @books.each do |book| %>
     <div class="col-4 align-items-stretch" >
       <div class="card" style="width: 24rem; height: 100;">
       <img src="<%= book.image_url %>" class="card-img-top" alt="...">
@@ -30,3 +30,4 @@
       </div>
     </div>
     <% end %>
+</div>

@@ -10,18 +10,18 @@
             <%= rental.user.email %>
           </div>
           <div class="rental-info-details">
-            <%= rental.start_date.strftime('%l:%M %p') %> - <%= rental.end_date.strftime('%l:%M %p') %>
+            <%= rental.start_date %> - <%= rental.end_date %>
           </div>
         </div>
       </div>
       <div class="rental-actions">
         <% if rental.pending? %>
-          <%= simple_form_for rental do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+          <%= simple_form_for [rental.book, rental] do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
             <%= f.submit 'Accept', class: 'btn btn-info' %>
           <% end %>
-          <%= simple_form_for rental do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+          <%= simple_form_for [rental.book, rental] do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
             <%= f.submit 'Reject', class: 'btn btn-light' %>
           <% end %>
         <% else %>
