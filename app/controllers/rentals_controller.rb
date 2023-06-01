@@ -29,30 +29,25 @@ class RentalsController < ApplicationController
   end
 
   def update
-    start_date = params[:rental][:start_date].split(" to ")[0]
-    end_date = params[:rental][:start_date].split(" to ")[1]
     @rental = Rental.find(params[:id])
-    if @rental.update(start_date: start_date, end_date: end_date)
-      redirect_to rentals_path
+    if @rental.update(rental_params)
+      redirect_to request.referrer
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  def update_status
-    @rentals = Rental.find(params[:id])
-    if @rentals.update(rental_params)
-      redirect_to rentals_path
-    else
-      render :edit, status: :unprocessable_entity
-    end
-
-  end
 
   private
 
   def rental_params
-    params.require(:rental).permit(:status, :book_id)
+    if params[:rental][:start_date].present?
+      start_date = params[:rental][:start_date].split(" to ")[0]
+      end_date = params[:rental][:start_date].split(" to ")[1]
+      params[:rental][:start_date] = start_date
+      params[:rental][:end_date] = end_date
+    end
+    params.require(:rental).permit(:status, :start_date, :end_date)
   end
 
   def set_book
