@@ -1,31 +1,25 @@
-<h1><%= @book.title %></h1>
-<h3><%= @book.author %></h3>
-<p><%= @book.synopsis %></p>
+<div class ="container" style="width:800px; margin-top:150px;">
+  <div class="row align-items-center justify-content-center p-3 border">
 
-<div class="d-flex justify-content-between">
-  <div style="width: 50%;">
-      <%= @book.image_url ? image_tag(@book.image_url) : "" %>
-    <br>
-    <br>
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-dark">
-        <%= link_to 'BACK TO ALL BOOKS', books_path %>
-      </button>
-
-      <% if @book.user_id == @renter.id %>
-        <button class="btn btn-dark">
-          <%= link_to 'UPDATE BOOK', edit_book_path %>
-        </button>
-        <button class="btn btn-danger">
-        <%= link_to 'X', book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        </button>
-      <% else %>
-        <% false %>
-      <% end %>
-
+    <div class="col-6" style="object-fit:contain">
+      <img src= <%= @book.image_url ? @book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%">
     </div>
-  </div>
-  <div>
-    <%= render 'layouts/calendar', book: @book, rental: @rental %>
+
+    <div class="col-6 d-flex flex-column">
+      <h1><%= @book.title %></h1>
+      <h3><%= @book.author %></h3>
+      <span class="update-book">
+        <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path %>
+      </span>
+        <% if @book.user_id == @renter.id %>
+          <span><%=link_to icon('fa-regular', 'trash-can'), book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></span>
+        <% else %>
+          <% false %>
+        <% end %>
+      <p><%= @book.synopsis %></p>
+    <div>
+      <%= render 'layouts/calendar', book: @book, rental: @rental %>
   </div>
 </div>
+</div>
+<div class="back-link"><%=link_to "Back to all books", books_path%></div>
