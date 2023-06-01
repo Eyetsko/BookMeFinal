@@ -39,10 +39,20 @@ class RentalsController < ApplicationController
     end
   end
 
+  def update_status
+    @rentals = Rental.find(params[:id])
+    if @rentals.update(rental_params)
+      redirect_to rentals_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+
+  end
+
   private
 
   def rental_params
-    params.require(:rental).permit(:book_id)
+    params.require(:rental).permit(:status, :book_id)
   end
 
   def set_book
