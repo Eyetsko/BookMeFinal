@@ -2,15 +2,16 @@
   <div class="container">
     <div class="row mt-5">
       <% @rentals.each do |rental| %>
-        <div class="col-4 mb-5">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <img src=<%=rental.book.image_url %> class="card-img-top" alt="...">
-              <h5 class="card-title"><%= rental.book.title %></h5>
-              <p class="card-text"><%= rental.book.author %></p>
-              <p class="card-text"><%= rental.start_date %></p>
-              <p class="card-text"><%= rental.end_date %></p>
-              <p class="card-text"><%= rental.status %></p>
+
+      <div class="card-product">
+        <img src= <%= rental.book.image_url %> />
+      <div class="card-product-infos">
+        <h2><%= rental.book.title %></h2>
+        <p>emily</p>
+        <p><%= rental.status %></p>
+      </div>
+      </div>
+
               <% if rental.status != 'Pending' %>
                 <a href= <%= edit_book_rental_path(rental.book.id, rental.id) %> class="btn btn-primary">Edit dates</a>
               <% end %>
