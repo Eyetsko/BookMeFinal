@@ -30,10 +30,14 @@ class RentalsController < ApplicationController
 
   def update
     @rental = Rental.find(params[:id])
-    if @rental.update(rental_params)
-      redirect_to request.referrer
+    if @rental.status == "Accepted"
+      if @rental.update(rental_params)
+        redirect_to profile_path
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to request.referrer
     end
   end
 

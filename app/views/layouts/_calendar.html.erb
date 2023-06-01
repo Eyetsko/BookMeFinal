@@ -1,10 +1,9 @@
 <div>
 
   <%= simple_form_for [book, rental]  do |f| %>
-    <%= f.input :start_date, as: :string, label: "FOR HOW LONG WILL YOU WANT ME?",
+    <%= f.input :start_date, as: :string, label: "Pick a date",
               input_html: { data: { controller: "datepicker" } } %>
 
-    <%= f.submit class: "btn btn-warning" %>
+    <%= f.submit class: "" %>
   <% end %>
-
 </div>
