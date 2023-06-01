@@ -8,10 +8,11 @@
     <div class="col-6 d-flex flex-column">
       <h1><%= @book.title %></h1>
       <h3><%= @book.author %></h3>
-      <span class="update-book">
-        <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path %>
-      </span>
+
         <% if @book.user_id == @renter.id %>
+          <span class="update-book">
+            <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path %>
+          </span>
           <span><%=link_to icon('fa-regular', 'trash-can'), book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></span>
         <% else %>
           <% false %>
