@@ -1,5 +1,6 @@
 
-.image-bg {
+.home{
+  .image-bg {
   background-image: url(https://images.unsplash.com/photo-1561871733-40a3338b8cb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80);
     height: 100vh;
     background-repeat: no-repeat;
@@ -36,22 +37,4 @@
   font-size: 20px;
 }
 
-.navbar > .container-fluid {
-  min-height: 2rem;
-  background-color: #563D7C;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
-  .sticky {
-    position: fixed;
-    top: 0;
-    // width: 100%;
-  }
-}
-.navbar-expand-lg .navbar-collapse {
-  background-color: #563D7C;
-}
-
-a.nav-link{
-  color: white;
-  background-color:#563D7C ;
-  text-decoration: none;
 }
