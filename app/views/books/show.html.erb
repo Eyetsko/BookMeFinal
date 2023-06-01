@@ -2,8 +2,8 @@
 <h3><%= @book.author %></h3>
 
 <div class="d-flex justify-content-between">
-  <div>
-    <%= @book.image_url ? image_tag(@book.image_url) : "" %>
+  <div style="width: 50%;">
+      <%= @book.image_url ? image_tag(@book.image_url) : "" %>
     <br>
     <br>
     <div class="d-flex justify-content-between">
@@ -13,6 +13,10 @@
 
       <button class="btn btn-dark">
         <%= link_to 'UPDATE BOOK', edit_book_path %>
+      </button>
+
+      <button class="btn btn-danger">
+        <%= link_to 'DELETE BOOK', book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       </button>
     </div>
   </div>
