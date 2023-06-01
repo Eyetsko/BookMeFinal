@@ -35,7 +35,7 @@ class RentalsController < ApplicationController
     if @rental.update(start_date: start_date, end_date: end_date)
       redirect_to rentals_path
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
