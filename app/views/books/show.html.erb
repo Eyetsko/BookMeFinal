@@ -11,13 +11,17 @@
         <%= link_to 'BACK TO ALL BOOKS', books_path %>
       </button>
 
-      <button class="btn btn-dark">
-        <%= link_to 'UPDATE BOOK', edit_book_path %>
-      </button>
+      <% if @book.user_id == @renter.id %>
+        <button class="btn btn-dark">
+          <%= link_to 'UPDATE BOOK', edit_book_path %>
+        </button>
+        <button class="btn btn-danger">
+        <%= link_to 'X', book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </button>
+      <% else %>
+        <% false %>
+      <% end %>
 
-      <button class="btn btn-danger">
-        <%= link_to 'DELETE BOOK', book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      </button>
     </div>
   </div>
   <div>

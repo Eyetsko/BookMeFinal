@@ -1,11 +1,16 @@
 class BooksController < ApplicationController
   def index
+    @renter = current_user
+    @renter_books = @renter.books
     @books = Book.all
+    @notmybooks = @books - @renter_books
+    @mybooks = @books - @notmybooks
   end
 
   def show
     @rental = Rental.new
     @book = Book.find(params[:id])
+    @renter = current_user
   end
 
   def new
