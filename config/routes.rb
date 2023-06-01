@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :rentals, only: [:new, :create, :edit, :update]
   end
-  resources :rentals, only: [:index, :update_status]
+  resources :rentals, only: [:index]
+
+  get :profile, to: "pages#profile"
 end
