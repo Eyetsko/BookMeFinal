@@ -1,24 +1,32 @@
-<h1>ALL BOOKS</h1>
+<h1>ALL BOOKS <%=link_to icon('fa-solid', 'circle-plus'), new_book_path%> </h1>
 
-  <div class="row d-flex justify-content-space evenly">
-  <div class="col-2 btn btn-primary me-auto mt-3 mb-3"><%= link_to 'POST A BOOK', new_book_path %></div>
+ <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "search for a book..."
+        %>
+        <%= submit_tag "Search", class: "" %>
+      <% end %>
 
-  <form class="d-flex" role="search">
-        <input class="form-control" type="search" placeholder="Search by title..." aria-label="Search">
-        <button class="btn btn-primary" type="submit">Search</button>
-  </form>
+
+  <div class="row d-flex justify-content-center">
 
 <% @books.each do |book| %>
     <div class="col-4 align-items-stretch" >
       <div class="card" style="width: 24rem; height: 100;">
       <img src="<%= book.image_url %>" class="card-img-top" alt="...">
         <div class="card-body" style="overflow:hidden;">
-          <p class="card-title"><strong><%= book.title %></strong></p>
+
+          <% if book.title.length > 35 %>
+            <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
+          <% else %>
+            <p class="card-title"><strong> <%= book.title  %>  </strong></p>
+          <% end %>
+
           <p class="card-text"><%= book.author %></p>
-          <button class="btn btn-primary"><%= link_to "book details", book_path(book) %></button>
+          <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
         </div>
       </div>
     </div>
     <% end %>
-
-</div>

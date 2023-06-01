@@ -16,7 +16,7 @@ class RentalsController < ApplicationController
     @rental.book = @book
     @rental.user = current_user
     if @rental.save!
-      redirect_to rentals_path
+      redirect_to rentals_path, notice: "Your book is rented!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,14 +35,24 @@ class RentalsController < ApplicationController
     if @rental.update(start_date: start_date, end_date: end_date)
       redirect_to rentals_path
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def update_status
+    @rentals = Rental.find(params[:id])
+    if @rentals.update(rental_params)
+      redirect_to rentals_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+
   end
 
   private
 
   def rental_params
-    params.require(:rental).permit(:book_id)
+    params.require(:rental).permit(:status, :book_id)
   end
 
   def set_book

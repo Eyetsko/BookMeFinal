@@ -1,9 +1,10 @@
 <h1><%= @book.title %></h1>
 <h3><%= @book.author %></h3>
+<p><%= @book.synopsis %></p>
 
 <div class="d-flex justify-content-between">
-  <div>
-    <%= image_tag(@book.image_url) %>
+  <div style="width: 50%;">
+      <%= @book.image_url ? image_tag(@book.image_url) : "" %>
     <br>
     <br>
     <div class="d-flex justify-content-between">
@@ -11,9 +12,17 @@
         <%= link_to 'BACK TO ALL BOOKS', books_path %>
       </button>
 
-      <button class="btn btn-dark">
-        <%= link_to 'UPDATE BOOK', edit_book_path %>
-      </button>
+      <% if @book.user_id == @renter.id %>
+        <button class="btn btn-dark">
+          <%= link_to 'UPDATE BOOK', edit_book_path %>
+        </button>
+        <button class="btn btn-danger">
+        <%= link_to 'X', book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </button>
+      <% else %>
+        <% false %>
+      <% end %>
+
     </div>
   </div>
   <div>

@@ -1,11 +1,22 @@
 class BooksController < ApplicationController
   def index
+    @renter = current_user
+    @renter_books = @renter.books
     @books = Book.all
+    @notmybooks = @books - @renter_books
+    @mybooks = @books - @notmybooks
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR author ILIKE :query"
+      @books = Book.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @books = Book.all
+    end
   end
 
   def show
     @rental = Rental.new
     @book = Book.find(params[:id])
+    @renter = current_user
   end
 
   def new
@@ -30,6 +41,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.update(book_params)
     redirect_to book_path(@book)
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
   end
 
   private
