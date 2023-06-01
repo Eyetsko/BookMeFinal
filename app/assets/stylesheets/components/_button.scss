@@ -1,11 +1,11 @@
 .button-bm {
     width: 160px;
-    margin-top: 15px;
+    margin-top: 20px;
     font-family: $bm-font;
     font-weight: regular;
     background-color: #FFBA08;
     color: black;
-    border-radius: 100px;
+    border-radius: 100px !important;
   // box-shadow: 10%;
   a{
     text-decoration: none;
