@@ -17,7 +17,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><%= link_to "Find a Book", "/books", class: "nav-link"%></li>
-            <li><%= link_to "My Rentals", rentals_path, class: "nav-link" %></li>
+            <li><%= link_to "My Profile", profile_path, class: "nav-link" %></li>
             <li><%= link_to "Add Book", new_book_path, class: "nav-link" %></li>
              <li><%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %></li>
           </ul>
