@@ -2,7 +2,11 @@
 <div class="navbar fixed-top navbar-expand-lg p-0">
   <div class="container-fluid">
     <%= link_to  "/", class: "nav-link" do %>
-      <i class="fa-solid fa-book-open-reader"></i> BookMe
+      <div class="d-flex align-items-center">
+        <i class="fa-solid fa-book-open-reader mr-2" style="
+      font-size: 27px; margin-right: 10px;"></i>
+        <p class="mt-4 icon-text">BookMe</p>
+      </div>
     <% end %>
     <div class="ms-auto" id="navbarSupportedContent">
       <ul class="navbar-nav">
