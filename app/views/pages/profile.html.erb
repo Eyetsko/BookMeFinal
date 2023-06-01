@@ -10,7 +10,7 @@
             <%= rental.user.email %>
           </div>
           <div class="rental-info-details">
-            <%= rental.start_date.strftime('%d.%m') %> - <%= rental.end_date.strftime('%d.%m') %>
+            <%= rental.start_date %> - <%= rental.end_date %>
           </div>
         </div>
       </div>
@@ -31,5 +31,3 @@
     </div>
   <% end %>
 </div>
-
-
