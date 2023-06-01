@@ -1,5 +1,6 @@
 
 <div class="rentals">
+<%@user %>
   <% current_user.rentals_as_owner.each do |rental| %>
     <div class="rental">
       <div class='rental-left'>
@@ -16,11 +17,11 @@
       </div>
       <div class="rental-actions">
         <% if rental.pending? %>
-          <%= simple_form_for rental do |f| %>
+          <%= simple_form_for [rental.book, rental] do |f| %>
             <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
             <%= f.submit 'Accept', class: 'btn btn-info' %>
           <% end %>
-          <%= simple_form_for rental do |f| %>
+          <%= simple_form_for [rental.book, rental] do |f| %>
             <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
             <%= f.submit 'Reject', class: 'btn btn-light' %>
           <% end %>
