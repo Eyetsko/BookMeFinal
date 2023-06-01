@@ -5,7 +5,7 @@ class Rental < ApplicationRecord
   validates :end_date, presence: true, comparison: { greater_than: :start_date }
 
   def pending?
-    status == 'pending'
+    status == 'Pending'
   end
-  
+
 end

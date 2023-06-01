@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_104454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "end_date"
-    t.string "status"
+    t.string "status", default: "Pending"
     t.index ["book_id"], name: "index_rentals_on_book_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end

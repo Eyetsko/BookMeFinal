@@ -1,19 +1,16 @@
 class BooksController < ApplicationController
   def index
-
     @renter = current_user
     @renter_books = @renter.books
     @books = Book.all
     @notmybooks = @books - @renter_books
     @mybooks = @books - @notmybooks
-
     if params[:query].present?
       sql_query = "title ILIKE :query OR author ILIKE :query"
-      @books = Book.where(sql_query, query: "%#{params[:query]}")
+      @books = Book.where(sql_query, query: "%#{params[:query]}%")
     else
       @books = Book.all
     end
-
   end
 
   def show
@@ -55,6 +52,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :image_url)
+    params.require(:book).permit(:title, :author, :image_url, :synopsis)
   end
 end

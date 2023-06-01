@@ -1,10 +1,13 @@
 // Import Google fonts
 // @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;900&family=Roboto:ital,wght@0,400;0,700;0,900;1,700&display=swap');
+
 // Define fonts for body and headers
-$body-font: 'Roboto', "sans-serif";
-$headers-font: 'Roboto', "sans-serif";
-$bm-font: 'Roboto', "sans-serif";
+$body-font: 'Kumbh Sans', "sans-serif";
+$headers-font: 'Kumbh Sans', "sans-serif";;
+$bm-font: 'Kumbh Sans', "sans-serif";
+
 
 
 // To use a font file (.woff) uncomment following lines
