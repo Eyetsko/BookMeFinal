@@ -1,25 +1,23 @@
 
 <div class="navbar fixed-top navbar-expand-lg p-0">
   <div class="container-fluid">
-  <%= link_to "BookMe", "/", class: "nav-link" %>
+  <%= link_to  "/", class: "nav-link" do %>
+      <i class="fa-solid fa-book-open-reader"></i> BookMe
+    <% end %>
     <div class="ms-auto" id="navbarSupportedContent">
       <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Find a Book", "/books", class: "nav-link" %>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Account
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Find a Book", "/books", class: "nav-link"%></li>
+            <li><%= link_to "My Rentals", rentals_path, class: "nav-link" %></li>
+            <li><%= link_to "Add Book", new_book_path, class: "nav-link" %></li>
+             <li><%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <%= link_to "My Rentals", rentals_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Add Book", new_book_path, class: "nav-link" %>
-        </li>
-          <li class="nav-item">
-          <%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %>
-        </li>
-
-        
-
       <% else %>
               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
               <%= link_to "Sign-up", new_user_registration_path, class: "nav-link" %>
