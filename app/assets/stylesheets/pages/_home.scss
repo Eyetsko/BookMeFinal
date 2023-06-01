@@ -1,12 +1,11 @@
 
-.image-bg {
-  background-image: url(https://images.pexels.com/photos/2898170/pexels-photo-2898170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+.home{
+  background-image: url(https://images.unsplash.com/photo-1561871733-40a3338b8cb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-.b-container {
+  .b-container {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
@@ -18,7 +17,7 @@
   margin-left: 93px !important;
 }
 
-.h1-title {
+h1 {
   color: white;
   font-size: 50px;
   font-family: $bm-font;
@@ -30,28 +29,10 @@
   text-shadow: 10%;
 }
 
-.h2-homepage {
+h2 {
   color: white;
   font-family: 'Roboto regular', sans-serif;
   font-size: 20px;
 }
 
-.navbar > .container-fluid {
-  min-height: 4rem;
-  background-color:white;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
-  .sticky {
-    position: fixed;
-    top: 0;
-    // width: 100%;
-  }
-}
-.navbar-expand-lg .navbar-collapse {
-  background-color:white;
-}
 
-a.nav-link{
-  color: black;
-  background-color:white ;
-  text-decoration: none;
-}

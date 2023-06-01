@@ -9,12 +9,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
   </head>
 
   <body>
-    <div class="container-full">
+    <div class="container">
       <%= render 'layouts/navbar' %>
         <%= yield %>
+    </div>
+    <div>
+    <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
