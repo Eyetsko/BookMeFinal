@@ -1,4 +1,4 @@
-<div class ="container" style="width:800px; margin-top:150px;">
+<div class ="container" style="width:800px; margin-top:100px;">
   <div class="row align-items-center justify-content-center p-3 border">
 
     <div class="col-6" style="object-fit:contain">
@@ -9,7 +9,7 @@
       <h1><%= @book.title %></h1>
       <h3><%= @book.author %></h3>
 
-        <% if @book.user_id == @renter.id %>
+        <% if @book.user_id === @renter.id %>
           <span class="update-book">
             <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path %>
           </span>
@@ -17,6 +17,7 @@
         <% else %>
           <% false %>
         <% end %>
+
       <p><%= @book.synopsis %></p>
     <div>
       <%= render 'layouts/calendar', book: @book, rental: @rental %>
