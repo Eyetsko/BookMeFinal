@@ -17,7 +17,12 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="my-requests" role="tabpanel" aria-labelledby="my-requests-tab" tabindex="0">
       <div class="rentals">
-        <% current_user.rentals_as_owner.each do |rental| %>
+
+<div class="container" style="width:500px; align-items:center;">
+<h1>My Requests</h1>
+<div class="row" style="width:500px; border: 1px grey;">
+    <div class="card-product mt-2 mb-2">
+<% current_user.rentals_as_owner.each do |rental| %>
           <div class="rental">
             <div class='rental-left'>
               <!-- if you're using cloudinary and activestorage -->
@@ -33,7 +38,7 @@
                   <%= rental.book.title %>
                 </div>
                 <div class="rental-info-details">
-                  <%= rental.book.author %>
+                  <%= rental.user.email %>
                 </div>
                 <div class="rental-info-details">
                   <%= "Rental period:" %>
@@ -41,7 +46,7 @@
                 </div>
               </div>
             </div>
-            <div class="rental-actions">
+            <div class="rental-actions ps-4">
               <% if rental.pending? %>
                 <%= simple_form_for [rental.book, rental] do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
@@ -56,6 +61,32 @@
               <% end %>
             </div>
           </div>
+        <% end %>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">
+      <div class="row d-flex justify-content-center">
+        <% Book.all.each do |book| %>
+          <% if book.user_id == current_user.id %>
+            <div class="col-4 align-items-stretch" >
+              <div class="card" style="width: 24rem; height: 100;">
+                <img src= <%= book.image_url ? book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%" class="card-img-top" >
+                  <div class="card-body" style="overflow:hidden;">
+                    <% if book.title.length > 35 %>
+                      <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
+                    <% else %>
+                      <p class="card-title"><strong> <%= book.title  %>  </strong></p>
+                    <% end %>
+
+                    <p class="card-text"><%= book.author %></p>
+                    <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
+                  </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -93,6 +124,7 @@
         <% end %>
       </div>
     </div>
+    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">ccc</div>
     <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
   </div>
 </div>
