@@ -6,17 +6,7 @@
       class: "form-control",
       placeholder: "search for a book..."
     %>
-    
   <% end %>
-
-<% @rentals = Rental.all %>
-
-<% @rentals.each do |rental| %>
-<% rental.book_id %>
-  <% @books.each do |book| %>
-  <% book.id %>
-
-    <% if rental.book_id != book.id %>
 
       <div class="row d-flex justify-content-center">
         <% @books.each do |book| %>
@@ -36,8 +26,5 @@
               </div>
             </div>
           </div>
-          <% end %>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
-<% end %>
