@@ -16,7 +16,7 @@ class RentalsController < ApplicationController
     @rental.book = @book
     @rental.user = current_user
     if @rental.save!
-      redirect_to rentals_path, notice: "Your book is rented!"
+      redirect_to rentals_path, notice: "Your request has been sent."
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class RentalsController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     else
-      redirect_to request.referrer
+      redirect_to books_path
     end
   end
 
