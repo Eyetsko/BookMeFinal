@@ -1,6 +1,5 @@
 <div id="books-index">
   <h1>All Books <%=link_to icon('fa-solid', 'circle-plus'), new_book_path %> </h1>
-  <i class="fa-solid fa-magnifying-glass"></i>
     <%= form_with url: books_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
@@ -8,7 +7,9 @@
         style: "border-radius: 20px; width: 1250px;",
         placeholder: ""
         %>
+
         <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 171px; top: 200px; z-index: 5;"></i>
+
     <% end %>
 
   <div class="row d-flex justify-content-center">

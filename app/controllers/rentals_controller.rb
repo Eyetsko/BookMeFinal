@@ -16,7 +16,7 @@ class RentalsController < ApplicationController
     @rental.book = @book
     @rental.user = current_user
     if @rental.save!
-      redirect_to rentals_path, alert: "Your request has been sent."
+      redirect_to profile_path, alert: "Your request has been sent."
     else
       render :new, status: :unprocessable_entity
     end
