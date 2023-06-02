@@ -8,7 +8,7 @@
       <button class="nav-link" id="my-books-tab" data-bs-toggle="tab" data-bs-target="#my-books" type="button" role="tab" aria-controls="my-books-tab-pane" aria-selected="false">My books</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="My rentals-tab" data-bs-toggle="tab" data-bs-target="#My rentals-tab-pane" type="button" role="tab" aria-controls="My rentals-tab-pane" aria-selected="false">My rentals</button>
+      <button class="nav-link" id="my-rentals-tab" data-bs-toggle="tab" data-bs-target="#my-rentals" type="button" role="tab" aria-controls="my-rentals-tab-pane" aria-selected="false">My rentals</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
@@ -24,6 +24,9 @@
               <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
               <div class="rental-info">
                 <div class="rental-info-title">
+                  <%= rental.user.first_name %>
+                </div>
+                <div class="rental-info-details">
                   <%= rental.user.email %>
                 </div>
                 <div class="rental-info-details">
@@ -56,7 +59,9 @@
         <% end %>
       </div>
     </div>
+
     <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">
+      <div class="container">
       <div class="row d-flex justify-content-center">
         <% Book.all.each do |book| %>
           <% if book.user_id == current_user.id %>
@@ -69,7 +74,6 @@
                     <% else %>
                       <p class="card-title"><strong> <%= book.title  %>  </strong></p>
                     <% end %>
-
                     <p class="card-text"><%= book.author %></p>
                     <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
                   </div>
@@ -78,8 +82,14 @@
           <% end %>
         <% end %>
       </div>
+      </div>
     </div>
-    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">ccc</div>
-    <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+
+
+    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">
+
+    </div>
+
+
   </div>
 </div>
