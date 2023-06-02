@@ -1,5 +1,5 @@
 <div class ="container" style="width:800px; margin-top:100px;">
-  <div class="row align-items-center justify-content-center p-3 border">
+  <div class="row align-items-center justify-content-center border">
 
     <div class="col-6" style="object-fit:contain">
       <img src= <%= @book.image_url ? @book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%">
@@ -11,9 +11,10 @@
 
         <% if @book.user_id == @current_user.id %>
           <span class="update-book">
-            <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path %>
-          </span>
+            <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path%>
           <span><%=link_to icon('fa-regular', 'trash-can'), book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></span>
+          </span>
+          <br>
         <% end %>
 
       <p><%= @book.synopsis %></p>
