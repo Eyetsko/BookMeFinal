@@ -10,19 +10,12 @@
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="my-rentals-tab" data-bs-toggle="tab" data-bs-target="#my-rentals" type="button" role="tab" aria-controls="my-rentals-tab-pane" aria-selected="false">My rentals</button>
     </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-    </li>
+
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="my-requests" role="tabpanel" aria-labelledby="my-requests-tab" tabindex="0">
       <div class="rentals">
-
-<div class="container" style="width:500px; align-items:center;">
-<h1>My Requests</h1>
-<div class="row" style="width:500px; border: 1px grey;">
-    <div class="card-product mt-2 mb-2">
-<% current_user.rentals_as_owner.each do |rental| %>
+        <% current_user.rentals_as_owner.each do |rental| %>
           <div class="rental">
             <div class='rental-left'>
               <!-- if you're using cloudinary and activestorage -->
@@ -38,7 +31,7 @@
                   <%= rental.book.title %>
                 </div>
                 <div class="rental-info-details">
-                  <%= rental.user.email %>
+                  <%= rental.book.author %>
                 </div>
                 <div class="rental-info-details">
                   <%= "Rental period:" %>
@@ -46,7 +39,7 @@
                 </div>
               </div>
             </div>
-            <div class="rental-actions ps-4">
+            <div class="rental-actions">
               <% if rental.pending? %>
                 <%= simple_form_for [rental.book, rental] do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
@@ -62,12 +55,11 @@
             </div>
           </div>
         <% end %>
-</div>
-</div>
-</div>
       </div>
     </div>
+
     <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">
+      <div class="container">
       <div class="row d-flex justify-content-center">
         <% Book.all.each do |book| %>
           <% if book.user_id == current_user.id %>
@@ -80,7 +72,6 @@
                     <% else %>
                       <p class="card-title"><strong> <%= book.title  %>  </strong></p>
                     <% end %>
-
                     <p class="card-text"><%= book.author %></p>
                     <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
                   </div>
@@ -89,40 +80,34 @@
           <% end %>
         <% end %>
       </div>
+      </div>
     </div>
-    <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">bbb</div>
-    <div class="tab-pane fade" id="my-rentals" role="my-rentalspanel" aria-labelledby="my-rentals-tab" tabindex="0">
-      <div class="rentals">
-        <% @rentals.each do |rental| %>
-          <div class="rental">
-            <div class='rental-left'>
-              <!-- if you're using cloudinary and activestorage -->
-              <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
-              <div class="rental-info">
-                <div class="rental-info-title">
-                  <%= rental.book.user.first_name %>
-                </div>
-                <div class="rental-info-title">
-                  <%= rental.book.user.email %>
-                </div>
-                <div class="rental-info-details">
-                  <%= rental.book.title %>
-                </div>
-                <div class="rental-info-details">
-                  <%= rental.book.author %>
-                </div>
-                <div class="rental-info-details">
-                  <%= "Rental period:" %>
-                  <%= rental.start_date %> to <%= rental.end_date %>
-                </div>
-              </div>
-            </div>
-            <div class="rental-actions">
-                <p class='rental-tag'><%= rental.status %></p>
-            </div>
-          </div>
+
+
+    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">
+
+<div class="container" style="width:500px; align-items:center;">
+<div class="row" style="width:500px">
+
+  <% @rentals.each do |rental| %>
+
+    <div class="card-product mt-2 mb-2">
+        <img src= <%= rental.book.image_url ? rental.book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> >
+      <div class="card-product-infos">
+        <h2><%= rental.book.title %></h2>
+        <p> <%= rental.book.user.email %></p>
+        <p><%= rental.status %></p>
+        <% if rental.status != 'Pending' %>
+          <a href= <%= edit_book_rental_path(rental.book.id, rental.id) %> class="btn btn-primary">Edit dates</a>
         <% end %>
       </div>
     </div>
-    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">ccc</div>
+  <% end %>
+
+</div>
+</div>
+    </div>
+
+
+  </div>
 </div>
