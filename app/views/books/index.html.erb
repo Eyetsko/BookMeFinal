@@ -15,7 +15,6 @@
       <div class="card" style="width: 24rem; height: 100;">
         <img src= <%= book.image_url ? book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%" class="card-img-top" >
           <div class="card-body" style="overflow:hidden;">
-
             <% if book.title.length > 35 %>
               <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
             <% else %>
