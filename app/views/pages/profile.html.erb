@@ -17,20 +17,22 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="my-requests" role="tabpanel" aria-labelledby="my-requests-tab" tabindex="0">
       <div class="rentals">
-        <% current_user.rentals_as_owner.each do |rental| %>
+
+<div class="container" style="width:500px; align-items:center;">
+<h1>My Requests</h1>
+<div class="row" style="width:500px; border: 1px grey;">
+    <div class="card-product mt-2 mb-2">
+<% current_user.rentals_as_owner.each do |rental| %>
           <div class="rental">
             <div class='rental-left'>
               <!-- if you're using cloudinary and activestorage -->
               <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
               <div class="rental-info">
                 <div class="rental-info-title">
-                  <%= rental.user.email %>
-                </div>
-                <div class="rental-info-details">
                   <%= rental.book.title %>
                 </div>
                 <div class="rental-info-details">
-                  <%= rental.book.author %>
+                  <%= rental.user.email %>
                 </div>
                 <div class="rental-info-details">
                   <%= "Rental period:" %>
@@ -38,7 +40,7 @@
                 </div>
               </div>
             </div>
-            <div class="rental-actions">
+            <div class="rental-actions ps-4">
               <% if rental.pending? %>
                 <%= simple_form_for [rental.book, rental] do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
@@ -54,6 +56,9 @@
             </div>
           </div>
         <% end %>
+</div>
+</div>
+</div>
       </div>
     </div>
     <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">bbb</div>
