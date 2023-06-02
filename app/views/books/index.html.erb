@@ -4,10 +4,11 @@
     <%= form_with url: books_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control ps-4",
         style: "border-radius: 20px; width: 1250px;",
-        placeholder: "search"
+        placeholder: ""
         %>
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 171px; top: 200px; z-index: 5;"></i>
     <% end %>
 
   <div class="row d-flex justify-content-center">
