@@ -1,10 +1,12 @@
 <h1>All Books <%=link_to icon('fa-solid', 'circle-plus'), new_book_path %> </h1>
-
+<i class="fa-solid fa-magnifying-glass"></i>
   <%= form_with url: books_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "search for a book..."%>
+      style: "border-radius: 20px; width: 1250px;",
+      placeholder: "search"
+      %>
   <% end %>
 
 <div class="row d-flex justify-content-center">
@@ -13,7 +15,6 @@
       <div class="card" style="width: 24rem; height: 100;">
         <img src= <%= book.image_url ? book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%" class="card-img-top" >
           <div class="card-body" style="overflow:hidden;">
-
             <% if book.title.length > 35 %>
               <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
             <% else %>
