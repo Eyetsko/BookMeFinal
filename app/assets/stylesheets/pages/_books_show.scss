@@ -19,3 +19,17 @@ a{
 .p-3{
   padding: 0;
 }
+
+.book-desc {
+  justify-content: flex-start;
+  height: 600px;
+  padding-top: 50px;
+}
+
+.icon-hover-pen:hover {
+  color: blue;
+}
+
+.icon-hover-trash:hover {
+  color: red;
+}

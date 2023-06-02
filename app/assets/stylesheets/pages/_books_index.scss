@@ -1,12 +1,19 @@
-i {
-  color: black;
-}
 
-h1{
-  font-weight: bold;
-  margin-top: 80px;
-  margin-bottom: 30px;
-}
-form_with{
-  border-radius: 10px;
+#books-index {
+  i {
+    color: black;
+  }
+
+  h1{
+    font-weight: bold;
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+  .form_with{
+    border-radius: 10px;
+  }
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
 }
