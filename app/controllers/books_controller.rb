@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   def show
     @rental = Rental.new
     @book = Book.find(params[:id])
-    @renter = current_user
+    @current_user = current_user
   end
 
   def new
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
+    @book.destroy!
     redirect_to books_path
   end
 
