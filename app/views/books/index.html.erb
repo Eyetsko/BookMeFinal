@@ -1,4 +1,4 @@
-<h1>ALL BOOKS <%=link_to icon('fa-solid', 'circle-plus'), new_book_path %> </h1>
+<h1>All Books <%=link_to icon('fa-solid', 'circle-plus'), new_book_path %> </h1>
 
   <%= form_with url: books_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
@@ -6,7 +6,7 @@
       class: "form-control",
       placeholder: "search for a book..."
     %>
-    
+
   <% end %>
 
 <% @rentals = Rental.all %>

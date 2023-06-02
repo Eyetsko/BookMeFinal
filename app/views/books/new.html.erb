@@ -1,6 +1,10 @@
-<h1>POST A BOOK TO BE RENTED</h1>
+<div class ="container m-100 form p-0" style="width:800px; margin-top:100px;">
+  <div class="row align-items-center justify-content-center p-3 border bg-light books-new-page">
+    <div class="col-10 d-flex flex-column booksnew">
+      <h2>Post a Book to be Rented</h2>
 
-<div class="row col-6 justify-content-center">
+<div class="books-new-page">
+  <div class="row col-10 justify-content-center newpage">
       <%= simple_form_for @book do |f| %>
       <%= f.input :title %>
       <%= f.input :author %>
@@ -8,8 +12,10 @@
       <%= f.input :image_url %>
       <%= f.submit class: "btn btn-warning" %>
     <% end %>
+  </div>
 </div>
 <br>
-<button class="btn btn-dark">
-  <%= link_to 'BACK TO ALL BOOKS', books_path %>
+<button class="btn btn-light button-bm">
+<i class="fa-solid fa-arrow-left"></i>
+  <%= link_to 'All Books', books_path %>
 </button>
