@@ -1,55 +1,63 @@
 <div class="container mt-5 pt-5">
+
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="Pending Requests-tab" data-bs-toggle="tab" data-bs-target="#Pending Requests-tab-pane" type="button" role="tab" aria-controls="Pending Requests-tab-pane" aria-selected="true">Pending Requests</button>
+      <button class="nav-link active" id="my-requests-tab" data-bs-toggle="tab" data-bs-target="#my-requests" type="button" role="tab" aria-controls="my-requests-tab-pane" aria-selected="true">My requests</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="My Books-tab" data-bs-toggle="tab" data-bs-target="/books" type="button" role="tab" aria-controls="My Books-tab-pane" aria-selected="false">My Books</button>
+      <button class="nav-link" id="my-books-tab" data-bs-toggle="tab" data-bs-target="#my-books" type="button" role="tab" aria-controls="my-books-tab-pane" aria-selected="false">My books</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="My Rentals-tab" data-bs-toggle="tab" data-bs-target="books_path" type="button" role="tab" aria-controls="My Rentals-tab-pane" aria-selected="false">My Rentals</button>
+      <button class="nav-link" id="My rentals-tab" data-bs-toggle="tab" data-bs-target="#My rentals-tab-pane" type="button" role="tab" aria-controls="My rentals-tab-pane" aria-selected="false">My rentals</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="pending-requests-tab-pane" role="tabpanel" aria-labelledby="pending-requests-tab" tabindex="0">aaa</div>
-    <div class="tab-pane fade" id="my-books-tab-pane" role="tabpanel" aria-labelledby="my-books-tab" tabindex="1">bbb</div>
-    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="2">ccc</div>
-    <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="3">ddd</div>
-  </div>
-
-    <div class="rentals">
-      <% current_user.rentals_as_owner.each do |rental| %>
-        <div class="rental">
-          <div class='rental-left'>
-            <!-- if you're using cloudinary and activestorage -->
-            <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
-            <div class="rental-info">
-              <div class="rental-info-title">
-                <%= rental.user.email %>
-              </div>
-              <div class="rental-info-details">
-                <%= rental.start_date %> - <%= rental.end_date %>
+    <div class="tab-pane fade show active" id="my-requests" role="tabpanel" aria-labelledby="my-requests-tab" tabindex="0">
+      <div class="rentals">
+        <% current_user.rentals_as_owner.each do |rental| %>
+          <div class="rental">
+            <div class='rental-left'>
+              <!-- if you're using cloudinary and activestorage -->
+              <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
+              <div class="rental-info">
+                <div class="rental-info-title">
+                  <%= rental.user.email %>
+                </div>
+                <div class="rental-info-details">
+                  <%= rental.book.title %>
+                </div>
+                <div class="rental-info-details">
+                  <%= rental.book.author %>
+                </div>
+                <div class="rental-info-details">
+                  <%= "Rental period:" %>
+                  <%= rental.start_date %> - <%= rental.end_date %>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="rental-actions">
-            <% if rental.pending? %>
-              <%= simple_form_for [rental.book, rental] do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
-                <%= f.submit 'Accept', class: 'btn btn-info' %>
+            <div class="rental-actions">
+              <% if rental.pending? %>
+                <%= simple_form_for [rental.book, rental] do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
+                  <%= f.submit 'Accept', class: 'btn btn-info' %>
+                <% end %>
+                <%= simple_form_for [rental.book, rental] do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
+                  <%= f.submit 'Reject', class: 'btn btn-light' %>
+                <% end %>
+              <% else %>
+                <p class='rental-tag'><%= rental.status %></p>
               <% end %>
-              <%= simple_form_for [rental.book, rental] do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
-                <%= f.submit 'Reject', class: 'btn btn-light' %>
-              <% end %>
-            <% else %>
-              <p class='rental-tag'><%= rental.status %></p>
-            <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+    <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">bbb</div>
+    <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">ccc</div>
+    <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+  </div>
 </div>
