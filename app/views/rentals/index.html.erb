@@ -9,8 +9,8 @@
         <img src= <%= rental.book.image_url ? rental.book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> >
       <div class="card-product-infos">
         <h2><%= rental.book.title %></h2>
-        <p> <%= rental.book.user.email %></p>
-        <p><%= rental.status %></p>
+        <h6> <%= rental.book.user.email %></h6>
+        <h6><strong><%= rental.status %></strong></h6>
         <% if rental.status != 'Pending' %>
           <a href= <%= edit_book_rental_path(rental.book.id, rental.id) %> class="btn btn-primary">Edit dates</a>
         <% end %>
@@ -20,3 +20,4 @@
 
 </div>
 </div>
+
