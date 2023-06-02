@@ -1,4 +1,4 @@
-<h1>ALL BOOKS <%=link_to icon('fa-solid', 'circle-plus'), new_book_path %> </h1>
+<h1>All Books <%=link_to icon('fa-solid', 'circle-plus'), new_book_path %> </h1>
 
   <%= form_with url: books_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
@@ -8,23 +8,21 @@
     %>
   <% end %>
 
-      <div class="row d-flex justify-content-center">
-        <% @books.each do |book| %>
-          <div class="col-4 align-items-stretch" >
-            <div class="card" style="width: 24rem; height: 100;">
-            <img src="<%= book.image_url %>" class="card-img-top" alt="...">
-              <div class="card-body" style="overflow:hidden;">
-
-                <% if book.title.length > 35 %>
-                  <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
-                <% else %>
-                  <p class="card-title"><strong> <%= book.title  %>  </strong></p>
-                <% end %>
-
-                <p class="card-text"><%= book.author %></p>
-                <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
-              </div>
-            </div>
+<div class="row d-flex justify-content-center">
+  <% @books.each do |book| %>
+    <div class="col-4 align-items-stretch" >
+      <div class="card" style="width: 24rem; height: 100;">
+        <img src= <%= book.image_url ? book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%" class="card-img-top" >
+          <div class="card-body" style="overflow:hidden;">
+            <% if book.title.length > 35 %>
+            <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
+            <% else %>
+            <p class="card-title"><strong> <%= book.title  %>  </strong></p>
+            <% end %>
+            <p class="card-text"><%= book.author %></p>
+            <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
           </div>
-        <% end %>
       </div>
+    </div>
+  <% end %>
+</div>
