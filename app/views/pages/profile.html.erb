@@ -10,9 +10,7 @@
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="my-rentals-tab" data-bs-toggle="tab" data-bs-target="#my-rentals" type="button" role="tab" aria-controls="my-rentals-tab-pane" aria-selected="false">My rentals</button>
     </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-    </li>
+
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="my-requests" role="tabpanel" aria-labelledby="my-requests-tab" tabindex="0">
@@ -88,6 +86,26 @@
 
     <div class="tab-pane fade" id="my-rentals-tab-pane" role="tabpanel" aria-labelledby="my-rentals-tab" tabindex="0">
 
+<div class="container" style="width:500px; align-items:center;">
+<div class="row" style="width:500px">
+
+  <% @rentals.each do |rental| %>
+
+    <div class="card-product mt-2 mb-2">
+        <img src= <%= rental.book.image_url ? rental.book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> >
+      <div class="card-product-infos">
+        <h2><%= rental.book.title %></h2>
+        <p> <%= rental.book.user.email %></p>
+        <p><%= rental.status %></p>
+        <% if rental.status != 'Pending' %>
+          <a href= <%= edit_book_rental_path(rental.book.id, rental.id) %> class="btn btn-primary">Edit dates</a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+</div>
     </div>
 
 
