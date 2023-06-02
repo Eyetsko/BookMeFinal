@@ -5,5 +5,6 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
+    @rentals = Rental.where(user_id: current_user.id).where('end_date >= ?', Date.today)
   end
 end

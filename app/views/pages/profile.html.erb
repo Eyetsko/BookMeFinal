@@ -8,7 +8,7 @@
       <button class="nav-link" id="my-books-tab" data-bs-toggle="tab" data-bs-target="#my-books" type="button" role="tab" aria-controls="my-books-tab-pane" aria-selected="false">My books</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="My rentals-tab" data-bs-toggle="tab" data-bs-target="#My rentals-tab-pane" type="button" role="tab" aria-controls="My rentals-tab-pane" aria-selected="false">My rentals</button>
+      <button class="nav-link" id="my-rentals-tab" data-bs-toggle="tab" data-bs-target="#my-rentals" type="button" role="tab" aria-controls="my-rentals-tab-pane" aria-selected="false">My rentals</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
@@ -29,6 +29,12 @@
               <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
               <div class="rental-info">
                 <div class="rental-info-title">
+                  <%= rental.user.first_name %>
+                </div>
+                <div class="rental-info-details">
+                  <%= rental.user.email %>
+                </div>
+                <div class="rental-info-details">
                   <%= rental.book.title %>
                 </div>
                 <div class="rental-info-details">
@@ -81,6 +87,40 @@
               </div>
             </div>
           <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">bbb</div>
+    <div class="tab-pane fade" id="my-rentals" role="my-rentalspanel" aria-labelledby="my-rentals-tab" tabindex="0">
+      <div class="rentals">
+        <% @rentals.each do |rental| %>
+          <div class="rental">
+            <div class='rental-left'>
+              <!-- if you're using cloudinary and activestorage -->
+              <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
+              <div class="rental-info">
+                <div class="rental-info-title">
+                  <%= rental.book.user.first_name %>
+                </div>
+                <div class="rental-info-title">
+                  <%= rental.book.user.email %>
+                </div>
+                <div class="rental-info-details">
+                  <%= rental.book.title %>
+                </div>
+                <div class="rental-info-details">
+                  <%= rental.book.author %>
+                </div>
+                <div class="rental-info-details">
+                  <%= "Rental period:" %>
+                  <%= rental.start_date %> to <%= rental.end_date %>
+                </div>
+              </div>
+            </div>
+            <div class="rental-actions">
+                <p class='rental-tag'><%= rental.status %></p>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
