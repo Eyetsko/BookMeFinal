@@ -54,7 +54,6 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:status)
     end
   end
-
   def set_book
     @book = Book.find(params[:book_id])
   end
