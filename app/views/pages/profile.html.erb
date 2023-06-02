@@ -62,35 +62,23 @@
     <div class="tab-pane fade" id="my-books" role="my-bookspanel" aria-labelledby="my-books-tab" tabindex="0">bbb</div>
     <div class="tab-pane fade" id="my-rentals" role="my-rentalspanel" aria-labelledby="my-rentals-tab" tabindex="0">
       <div class="rentals">
-        <% @rentals.each do |rental| %>
-          <div class="rental">
-            <div class='rental-left'>
-              <!-- if you're using cloudinary and activestorage -->
-              <%# <%= cl_image_tag rental.user.photo, class: 'avatar-bordered' %>
-              <div class="rental-info">
-                <div class="rental-info-title">
-                  <%= rental.book.user.first_name %>
-                </div>
-                <div class="rental-info-title">
-                  <%= rental.book.user.email %>
-                </div>
-                <div class="rental-info-details">
-                  <%= rental.book.title %>
-                </div>
-                <div class="rental-info-details">
-                  <%= rental.book.author %>
-                </div>
-                <div class="rental-info-details">
-                  <%= "Rental period:" %>
-                  <%= rental.start_date %> to <%= rental.end_date %>
+        <div class="container" style="width:500px; align-items:center;">
+          <div class="row" style="width:500px">
+            <% @rentals.each do |rental| %>
+              <div class="card-product mt-2 mb-2">
+                <img src= <%= rental.book.image_url ? rental.book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> >
+                <div class="card-product-infos">
+                  <h2><%= rental.book.title %></h2>
+                  <p> <%= rental.book.user.email %></p>
+                  <p><%= rental.status %></p>
+                  <% if rental.status != 'Pending' %>
+                  <a href= <%= edit_book_rental_path(rental.book.id, rental.id) %> class="btn btn-primary">Edit dates</a>
+                  <% end %>
                 </div>
               </div>
-            </div>
-            <div class="rental-actions">
-                <p class='rental-tag'><%= rental.status %></p>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
