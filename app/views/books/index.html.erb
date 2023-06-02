@@ -4,40 +4,26 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "search for a book..."
-    %>
-    
+      placeholder: "search for a book..."%>
   <% end %>
 
-<% @rentals = Rental.all %>
+  <div class="row d-flex justify-content-center">
+    <% @books.each do |book| %>
+      <div class="col-4 align-items-stretch" >
+        <div class="card" style="width: 24rem; height: 100;">
+        <img src="<%= book.image_url %>" class="card-img-top" alt="...">
+          <div class="card-body" style="overflow:hidden;">
 
-<% @rentals.each do |rental| %>
-<% rental.book_id %>
-  <% @books.each do |book| %>
-  <% book.id %>
+            <% if book.title.length > 35 %>
+              <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
+            <% else %>
+              <p class="card-title"><strong> <%= book.title  %>  </strong></p>
+            <% end %>
 
-    <% if rental.book_id != book.id %>
-
-      <div class="row d-flex justify-content-center">
-        <% @books.each do |book| %>
-          <div class="col-4 align-items-stretch" >
-            <div class="card" style="width: 24rem; height: 100;">
-            <img src="<%= book.image_url %>" class="card-img-top" alt="...">
-              <div class="card-body" style="overflow:hidden;">
-
-                <% if book.title.length > 35 %>
-                  <p class="card-title"><strong> <%= "#{book.title.slice(0,35)}..." %>  </strong></p>
-                <% else %>
-                  <p class="card-title"><strong> <%= book.title  %>  </strong></p>
-                <% end %>
-
-                <p class="card-text"><%= book.author %></p>
-                <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
-              </div>
-            </div>
+            <p class="card-text"><%= book.author %></p>
+            <button class="btn btn-light button-bm"><%= link_to "book details", book_path(book) %></button>
           </div>
-          <% end %>
+        </div>
       </div>
-    <% end %>
-  <% end %>
-<% end %>
+      <% end %>
+  </div>
