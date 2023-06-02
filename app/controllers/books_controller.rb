@@ -11,17 +11,19 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
+
   end
 
   def show
     @rental = Rental.new
     @book = Book.find(params[:id])
-    @current_user = current_user
+    # @current_user = current_user
   end
 
   def new
     @user = current_user
     @book = Book.new
+
   end
 
   def create
