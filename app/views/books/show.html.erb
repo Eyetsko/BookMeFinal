@@ -1,25 +1,27 @@
 <div class ="container" style="width:800px; margin-top:100px;">
   <div class="row align-items-center justify-content-center border">
 
-    <div class="col-6" style="object-fit:contain">
+    <div class="col-6" style="object-fit:contain;padding-left:0;">
       <img src= <%= @book.image_url ? @book.image_url : "https://i.pinimg.com/originals/8d/13/b1/8d13b15006817344608393deb8b3a9a2.jpg" %> alt="" style="width: 100%">
     </div>
 
-    <div class="col-6 d-flex flex-column">
+    <div class="col-6 d-flex flex-column book-desc">
       <h1><%= @book.title %></h1>
       <h3><%= @book.author %></h3>
 
         <% if @book.user_id == current_user.id %>
           <span class="update-book">
-            <%= link_to icon('fa-regular', 'pen-to-square'), edit_book_path%>
-          <span><%=link_to icon('fa-regular', 'trash-can'), book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></span>
+            <%= link_to icon('fa-regular', 'pen-to-square icon-hover-pen'), edit_book_path%>
+          <span><%=link_to icon('fa-regular', 'trash-can icon-hover-trash'), book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></span>
           </span>
           <br>
         <% end %>
 
       <p><%= @book.synopsis %></p>
     <div>
+    <% if @book.user_id != current_user.id %>
       <%= render 'layouts/calendar', book: @book, rental: @rental %>
+    <% end %>
   </div>
 </div>
 </div>

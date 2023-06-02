@@ -30,7 +30,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user = current_user
     if @book.save!
-      redirect_to books_path
+      redirect_to book_path(@book)
     else
       render :new, status: :unprocessable_entity
     end
