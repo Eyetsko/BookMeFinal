@@ -1,13 +1,17 @@
-<h1>UPDATE <%= @book.title %></h1>
+<div class ="container m-100 form p-0" style="width:800px; margin-top:100px;">
+  <div class="row align-items-center justify-content-center p-3 border bg-light books-new-page">
+    <div class="col-10 d-flex flex-column booksnew">
+      <h2>Update <%= @book.title %></h2>
 
-<div class="row col-6 justify-content-center">
-  <div>
-    <%= simple_form_for @book do |f| %>
-      <%= f.input :title %>
-      <%= f.input :author %>
-      <%= f.input :synopsis %>
-      <%= f.input :image_url %>
-      <%= f.submit class: "btn btn-warning", label: "UPDATED" %>
-    <% end %>
+  <div class="row col-10 justify-content-center">
+    <div>
+      <%= simple_form_for @book do |f| %>
+        <%= f.input :title %>
+        <%= f.input :author %>
+        <%= f.input :synopsis %>
+        <%= f.input :image_url %>
+        <%= f.submit class: "btn btn-warning", label: "Updated" %>
+      <% end %>
+    </div>
   </div>
 </div>
